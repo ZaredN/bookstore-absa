@@ -1,0 +1,40 @@
+spring:
+    security:
+        oauth2:
+            client:
+                registration:
+                    github:
+                        clientId: 5cce5eab6fdd67434c35
+                        clientSecret: 69f34aa4a4c49f9c32c53b1a6ca03297a89f1413
+    sql:
+        init:
+            mode: always
+
+
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/bookdb?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        username: bookuser
+        password: password
+    jpa:
+        database: mysql
+        hibernate.ddl-auto: validate
+        generate-ddl: true
+        show-sql: true
+        properties:
+            hibernate:
+                show-sql: true
+                format_sql: true
+
+
+    liquibase:
+        change-log: db/changelog/changelog-master.xml
+        user: bookadmin
+        password: password
+
+logging:
+    level:
+        org:
+            hibernate:
+                type:
+                    descriptor:
+                        sql: trace
