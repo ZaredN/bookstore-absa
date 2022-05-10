@@ -1,56 +1,32 @@
 package za.co.absa.bookstore.controller;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.co.absa.bookstore.entity.Book;
 import za.co.absa.bookstore.service.BookService;
 
-@RestController
-public class BookController {
+import java.util.List;
 
+@RestController
+@RequestMapping("/books")
+public class BookController {
     @Autowired
     BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
-
-    //TODO: get a single book
-    @GetMapping("/books/{id}")
-    public void getBook(@PathVariable long id){
-            bookService.orderBook(id);
-
-    }
-    //TODO: get all books
-    @GetMapping("/bookList")
-    public void getAllBooks(RequestBody Book) {
-        bookService.getAll();
-    }
-
-    //TODO: delete a book
-    public void deleteBook() {
+    @GetMapping(value = "/all")
+    List<Book> getAllBooks() {
+        return bookService.getAll();
 
     }
 
-    //TODO: delete all Books
-    public void deleteAllBooks() {
+    @PostMapping("/create")
+    public void saveBook(@RequestBody Book book){
+        bookService.save(book);
 
     }
 
-    //TODO: save a book
-    public void saveBook(){
-
-    }
-
-    //TODO: save all books
-    public void saveAllBooks(){
-
-    }
-
-    @PostMapping("/order/{title}")
-    public Book orderABook(@PathVariable String title){
-      return bookService.orderBookByTitle(title);
-
-    }
 }

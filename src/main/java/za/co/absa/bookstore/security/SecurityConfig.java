@@ -9,8 +9,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/books/**").permitAll()
-            .antMatchers("bookList").permitAll()
+
             .anyRequest().authenticated()
 
             .and()
@@ -19,5 +18,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
     }
-    //TODO allow access for swagger to be accessed without auth
+
 }

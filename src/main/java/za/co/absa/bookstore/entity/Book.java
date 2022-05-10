@@ -24,11 +24,11 @@ public class Book {
     @Column
     private String title;
     @Column
-    private String publisher;
+    private String publisher; // possible entity here made string to save time
     @Column
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
-    @Transient
+    @Transient //didnt get enough time to do relational mapping one to many many to many etc..
     private Author authorId;
 
     @Override
