@@ -11,6 +11,7 @@
 	<groupId>za.co.absa</groupId>
 	<artifactId>bookstore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 	<name>bookstore</name>
 	<description>rest api for bookstore with oauth</description>
 	<properties>
