@@ -17,24 +17,24 @@ jobs:
             AWS_REGION: 'us-east-2'
     steps:
         - name: Checkout
-           uses: actions/checkout@v2
+          uses: actions/checkout@v2
 
         - name: Setup Terraform
           uses: hashicorp/setup-terraform@v1
 
         - name: Terraform Init
-              id: init
-              run: terraform init
+          id: init
+          run: terraform init
 
         - name: Terraform Plan
-              id: plan
-              if: github.event_name == 'push'
-              run: terraform plan -no-color
-              continue-on-error: true
+          id: plan
+          if: github.event_name == 'push'
+          run: terraform plan -no-color
+          continue-on-error: true
 
         - name: Terraform Apply
-            if: steps.plan.outcome == 'failure'
-            run: exit 1
+          if: steps.plan.outcome == 'failure'
+          run: exit 1
 
         - name: Terraform Apply
           if: github.ref == 'refs/heads/main' && github.event_name == 'push'

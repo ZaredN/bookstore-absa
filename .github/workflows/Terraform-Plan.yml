@@ -12,23 +12,24 @@ jobs:
         name: "Terraform"
         runs-on: ubuntu-latest
         env:
-            AWS_ACCESS_KEY_ID: ${{ secret.AWS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY: ${{ secret.AWS_ACCESS_KEY }}
-            AWS_REGION: 'us-east-2'
+        AWS_ACCESS_KEY_ID: ${{ secret.AWS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secret.AWS_ACCESS_KEY }}
+        AWS_REGION: 'us-east-2'
+
     steps:
-        - name: Checkout
-         uses: actions/checkout@V2
+     - name: Checkout
+       uses: actions/checkout@v2
 
-        - name: Setup Terraform
-          uses: hashicorp/setup-terraform@v1
+     - name: Setup Terraform
+       uses: hashicorp/setup-terraform@v1
 
-        - name: Terraform Init
-           id: init
-           run: terraform init
+     - name: Terraform Init
+       id: init
+       run: terraform init
 
-        - name: Terraform Plan
-           id: plan
-           if: github.event_name -- 'push'
-           run: terraform plan -no-color
+     - name: Terraform Plan
+       id: plan
+       if: github.event_name -- 'push'
+       run: terraform plan -no-color
 
 
