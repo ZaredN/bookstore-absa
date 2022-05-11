@@ -4,10 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -19,6 +18,17 @@ public class Author {
     private Long id;
     private String firstName;
     private String lastName;
+
+    @ManyToMany
+    @JoinTable(
+        name = "BookAuthor",
+        joinColumns = {
+            @JoinColumn(name = "bookId", referencedColumnName = "Id")
+        },inverseJoinColumns = {@JoinColumn(name = "authorId",
+          referencedColumnName = "Id")}
+    )
+    @MapKey(name = "title")
+    private Map<String, BookGroup> books = new HashMap<String, BookGroup>();
 
     @Override
     public boolean equals(Object o) {
