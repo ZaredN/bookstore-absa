@@ -19,16 +19,6 @@ public class Author {
     private String firstName;
     private String lastName;
 
-    @ManyToMany
-    @JoinTable(
-        name = "BookAuthor",
-        joinColumns = {
-            @JoinColumn(name = "bookId", referencedColumnName = "Id")
-        },inverseJoinColumns = {@JoinColumn(name = "authorId",
-          referencedColumnName = "Id")}
-    )
-    @MapKey(name = "title")
-    private Map<String, BookGroup> books = new HashMap<String, BookGroup>();
 
     @Override
     public boolean equals(Object o) {
