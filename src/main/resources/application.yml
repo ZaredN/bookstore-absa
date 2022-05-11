@@ -5,7 +5,7 @@ spring:
                 registration:
                     github:
                         clientId: 5cce5eab6fdd67434c35 #ran out of time to add secret in aws i know this is a security risk kindly excuse will add it to the aws -> ubuntu image in future as env var
-                        clientSecret: 69f34aa4a4c49f9c32c53b1a6ca03297a89f1413 #+
+                        clientSecret: 002de6b6da974abf8079316f163bc6640bb3ea0f
     sql:
         init:
             mode: always
